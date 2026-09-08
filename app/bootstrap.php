@@ -9,7 +9,9 @@ define('BASE_PATH', dirname(__DIR__));
 spl_autoload_register(static function (string $class): void {
     $adminPrefix = 'App\\Admin\\';
     if (str_starts_with($class, $adminPrefix)) {
-        $relative = str_replace('\\', DIRECTORY_SEPARATOR, substr($class, strlen($adminPrefix)));
+        $parts = explode('\\', substr($class, strlen($adminPrefix)));
+        $parts[0] = strtolower($parts[0]);
+        $relative = implode(DIRECTORY_SEPARATOR, $parts);
         $file = BASE_PATH . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . $relative . '.php';
         if (is_file($file)) require $file;
         return;
@@ -18,7 +20,9 @@ spl_autoload_register(static function (string $class): void {
     if (!str_starts_with($class, $prefix)) {
         return;
     }
-    $relative = str_replace('\\', DIRECTORY_SEPARATOR, substr($class, strlen($prefix)));
+    $parts = explode('\\', substr($class, strlen($prefix)));
+    $parts[0] = strtolower($parts[0]);
+    $relative = implode(DIRECTORY_SEPARATOR, $parts);
     $file = BASE_PATH . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . $relative . '.php';
     if (is_file($file)) {
         require $file;
