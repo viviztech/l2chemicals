@@ -1,0 +1,140 @@
+SET NAMES utf8mb4;
+START TRANSACTION;
+
+INSERT INTO settings (setting_group, setting_key, setting_value, field_type, is_public) VALUES
+('general','company_name','L2 Chemicals','text',1),
+('general','logo','','image',1),
+('general','favicon','','image',1),
+('contact','phone','','text',1),
+('contact','secondary_phone','','text',1),
+('contact','email','','email',1),
+('contact','whatsapp','','text',1),
+('contact','address','','textarea',1),
+('contact','warehouse_address','','textarea',1),
+('contact','google_map','','textarea',1),
+('social','facebook','','url',1),
+('social','instagram','','url',1),
+('social','linkedin','','url',1),
+('social','youtube','','url',1),
+('seo','default_seo_title','L2 Chemicals | Thermoplastic Resins & Polymer Additives','text',1),
+('seo','default_meta_description','Reliable supply partner for PVC, PE, PP, Engineering Plastics, Masterbatch and thermoplastic additives.','textarea',1),
+('seo','default_og_image','','image',1),
+('tracking','google_analytics','','text',0),
+('tracking','google_tag_manager','','text',0),
+('footer','footer_description','Reliable supply partner for thermoplastic resins and specialty additives for the plastic processing industry.','textarea',1),
+('footer','copyright','© L2 Chemicals. All rights reserved.','text',1),
+('homepage','hero_title','Complete Solutions for Thermoplastic Resins & Polymer Additives','text',1),
+('homepage','hero_description','Reliable supply partner for PVC, PE, PP, Engineering Plastics, Masterbatch and thermoplastic additives.','textarea',1),
+('homepage','hero_primary_text','Explore Products','text',1),
+('homepage','hero_primary_url','products','text',1),
+('homepage','hero_secondary_text','Request a Quote','text',1),
+('homepage','hero_secondary_url','request-quote','text',1),
+('homepage','home_about_title','Your Reliable Polymer & Additive Partner','text',1),
+('homepage','home_about_description','L2 Chemicals supplies thermoplastic resins and specialty additives to compounders, masterbatch producers, converters and manufacturers across India.','textarea',1),
+('homepage','why_heading','Why Choose L2 Chemicals','text',1),
+('homepage','why_description','Responsive supply and application-oriented support for polymer processors.','textarea',1),
+('homepage','why_benefits','Reliable Supply\nQuality Materials\nTechnical Support\nCommercial Support\nCustomized Solutions\nPan-India Supply','textarea',1),
+('homepage','solutions_title','Solutions Engineered for Better Performance','text',1),
+('homepage','solutions_description','From material selection to additive recommendations, we help align polymer solutions with processing needs and end-use applications.','textarea',1),
+('homepage','solutions_button_text','Discuss Your Requirement','text',1),
+('homepage','quote_cta_title','Looking for the Right Material for Your Application?','text',1),
+('homepage','quote_cta_button_text','Request Quote','text',1),
+('content','industries_intro','Explore polymer material and additive solutions by industry and processing application.','textarea',1),
+('content','insights_intro','Practical perspectives on polymers, additives, processing and material performance.','textarea',1),
+('content','contact_intro','Speak with our team about products, availability and application requirements.','textarea',1);
+
+INSERT INTO product_categories (name, slug, short_description, description, icon, sort_order, status) VALUES
+('Color & Appearance','color-appearance','Pigments, masterbatches and optical solutions for color and appearance requirements.','Explore color, opacity and optical appearance additives for polymer applications.','palette',10,'PUBLISHED'),
+('Stabilizers','stabilizers','Heat, UV and oxidation stabilization solutions for polymers.','Stabilizer families supporting polymer processing and service-life requirements.','shield-halved',20,'PUBLISHED'),
+('Processing Aids & Lubricants','processing-aids-lubricants','Materials supporting flow, lubrication and polymer processing.','Internal and external lubrication, waxes and processing modifier families.','gears',30,'PUBLISHED'),
+('Impact & Performance Modifiers','impact-performance-modifiers','Modifier families for impact and performance requirements.','Impact, toughening and acrylic-based modifier solutions.','wand-magic-sparkles',40,'PUBLISHED'),
+('Flame Retardants','flame-retardants','Flame-retardant and smoke-suppression additive families.','Halogenated, non-halogenated and intumescent additive options.','fire-flame-curved',50,'PUBLISHED'),
+('Fillers & Reinforcements','fillers-reinforcements','Mineral fillers, glass fiber and coupling agent families.','Filler and reinforcement materials for a range of polymer applications.','layer-group',60,'PUBLISHED'),
+('Specialty Additives','specialty-additives','Functional additives for surface, processing and protection needs.','Specialty additive families selected around specific application requirements.','microscope',70,'PUBLISHED'),
+('Thermoplastic Resins','thermoplastic-resins','PVC, PE, PP and engineering thermoplastic resin solutions.','Thermoplastic resin supply aligned with processing and application needs.','cubes-stacked',80,'PUBLISHED');
+
+INSERT INTO products (category_id, name, slug, short_description, status, sort_order) VALUES
+((SELECT id FROM product_categories WHERE slug='color-appearance'),'Titanium Dioxide','titanium-dioxide','Titanium dioxide solutions for polymer color and opacity requirements.','PUBLISHED',10),
+((SELECT id FROM product_categories WHERE slug='color-appearance'),'Color Pigments','color-pigments','Color pigment options for thermoplastic applications.','PUBLISHED',20),
+((SELECT id FROM product_categories WHERE slug='color-appearance'),'Masterbatches','masterbatches','Masterbatch solutions for polymer coloration and functional needs.','PUBLISHED',30),
+((SELECT id FROM product_categories WHERE slug='color-appearance'),'Opacity Pigments','opacity-pigments','Pigment solutions for opacity requirements in polymers.','PUBLISHED',40),
+((SELECT id FROM product_categories WHERE slug='color-appearance'),'Optical Brighteners','optical-brighteners','Optical brightener options for polymer appearance applications.','PUBLISHED',50),
+((SELECT id FROM product_categories WHERE slug='stabilizers'),'Heat Stabilizers','heat-stabilizers','Heat stabilizer families for thermoplastic processing.','PUBLISHED',10),
+((SELECT id FROM product_categories WHERE slug='stabilizers'),'Calcium-Zinc Stabilizers','calcium-zinc-stabilizers','Calcium-zinc stabilizer solutions for relevant polymer applications.','PUBLISHED',20),
+((SELECT id FROM product_categories WHERE slug='stabilizers'),'Tin Stabilizers','tin-stabilizers','Tin stabilizer solutions for relevant polymer applications.','PUBLISHED',30),
+((SELECT id FROM product_categories WHERE slug='stabilizers'),'UV Stabilizers','uv-stabilizers','UV stabilization options selected around application requirements.','PUBLISHED',40),
+((SELECT id FROM product_categories WHERE slug='stabilizers'),'HALS','hals','Hindered amine light stabilizer solutions.','PUBLISHED',50),
+((SELECT id FROM product_categories WHERE slug='stabilizers'),'UV Absorbers','uv-absorbers','UV absorber solutions for polymer applications.','PUBLISHED',60),
+((SELECT id FROM product_categories WHERE slug='stabilizers'),'Antioxidants','antioxidants','Antioxidant solutions for thermoplastic applications.','PUBLISHED',70),
+((SELECT id FROM product_categories WHERE slug='processing-aids-lubricants'),'PE Wax','pe-wax','Polyethylene wax for relevant polymer-processing applications.','PUBLISHED',10),
+((SELECT id FROM product_categories WHERE slug='processing-aids-lubricants'),'OPE Wax','ope-wax','Oxidized polyethylene wax for relevant polymer-processing applications.','PUBLISHED',20),
+((SELECT id FROM product_categories WHERE slug='processing-aids-lubricants'),'Stearic Acid','stearic-acid','Stearic acid for relevant plastics-processing requirements.','PUBLISHED',30),
+((SELECT id FROM product_categories WHERE slug='processing-aids-lubricants'),'Internal Lubricants','internal-lubricants','Internal lubrication solutions for polymer processing.','PUBLISHED',40),
+((SELECT id FROM product_categories WHERE slug='processing-aids-lubricants'),'External Lubricants','external-lubricants','External lubrication solutions for polymer processing.','PUBLISHED',50),
+((SELECT id FROM product_categories WHERE slug='processing-aids-lubricants'),'Flow Modifiers','flow-modifiers','Flow modifier options for application-specific requirements.','PUBLISHED',60),
+((SELECT id FROM product_categories WHERE slug='processing-aids-lubricants'),'Processing Modifiers','processing-modifiers','Processing modifier solutions for thermoplastic applications.','PUBLISHED',70),
+((SELECT id FROM product_categories WHERE slug='impact-performance-modifiers'),'MBS','mbs','MBS modifier solutions for relevant polymer applications.','PUBLISHED',10),
+((SELECT id FROM product_categories WHERE slug='impact-performance-modifiers'),'CPE','cpe','CPE modifier solutions for relevant polymer applications.','PUBLISHED',20),
+((SELECT id FROM product_categories WHERE slug='impact-performance-modifiers'),'ABS-based Modifiers','abs-based-modifiers','ABS-based modifier solutions for performance requirements.','PUBLISHED',30),
+((SELECT id FROM product_categories WHERE slug='impact-performance-modifiers'),'Toughening Agents','toughening-agents','Toughening agent options selected around application needs.','PUBLISHED',40),
+((SELECT id FROM product_categories WHERE slug='impact-performance-modifiers'),'Acrylic-based Modifiers','acrylic-based-modifiers','Acrylic-based modifier solutions for polymer applications.','PUBLISHED',50),
+((SELECT id FROM product_categories WHERE slug='flame-retardants'),'Halogenated Flame Retardants','halogenated-flame-retardants','Halogenated flame-retardant options for relevant applications.','PUBLISHED',10),
+((SELECT id FROM product_categories WHERE slug='flame-retardants'),'Non-halogenated Flame Retardants','non-halogenated-flame-retardants','Non-halogenated flame-retardant options for relevant applications.','PUBLISHED',20),
+((SELECT id FROM product_categories WHERE slug='flame-retardants'),'Smoke Suppressants','smoke-suppressants','Smoke-suppressant additive solutions for polymer applications.','PUBLISHED',30),
+((SELECT id FROM product_categories WHERE slug='flame-retardants'),'Intumescent Additives','intumescent-additives','Intumescent additive options for relevant polymer systems.','PUBLISHED',40),
+((SELECT id FROM product_categories WHERE slug='fillers-reinforcements'),'Calcium Carbonate','calcium-carbonate','Calcium carbonate options for polymer formulation requirements.','PUBLISHED',10),
+((SELECT id FROM product_categories WHERE slug='fillers-reinforcements'),'Talc','talc','Talc filler solutions for polymer applications.','PUBLISHED',20),
+((SELECT id FROM product_categories WHERE slug='fillers-reinforcements'),'Mica','mica','Mica filler solutions for polymer applications.','PUBLISHED',30),
+((SELECT id FROM product_categories WHERE slug='fillers-reinforcements'),'Glass Fiber','glass-fiber','Glass fiber reinforcement options for thermoplastics.','PUBLISHED',40),
+((SELECT id FROM product_categories WHERE slug='fillers-reinforcements'),'Mineral Fillers','mineral-fillers','Mineral filler options selected around formulation needs.','PUBLISHED',50),
+((SELECT id FROM product_categories WHERE slug='fillers-reinforcements'),'Coupling Agents','coupling-agents','Coupling agent solutions for compatible polymer systems.','PUBLISHED',60),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Slip Agents','slip-agents','Slip additive solutions for surface and processing requirements.','PUBLISHED',10),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Anti-slip Agents','anti-slip-agents','Anti-slip additive options for polymer applications.','PUBLISHED',20),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Anti-block Agents','anti-block-agents','Anti-block additive solutions for relevant applications.','PUBLISHED',30),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Anti-static Agents','anti-static-agents','Anti-static additive options for polymer applications.','PUBLISHED',40),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Anti-fog Additives','anti-fog-additives','Anti-fog additive solutions for relevant polymer products.','PUBLISHED',50),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Nucleating Agents','nucleating-agents','Nucleating agent solutions selected around polymer requirements.','PUBLISHED',60),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Clarifying Agents','clarifying-agents','Clarifying agent options for compatible polymer applications.','PUBLISHED',70),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Moisture Scavengers','moisture-scavengers','Moisture-scavenging additive solutions.','PUBLISHED',80),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Desiccants','desiccants','Desiccant solutions for relevant plastics-processing needs.','PUBLISHED',90),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Antimicrobials','antimicrobials','Antimicrobial additive options for relevant applications.','PUBLISHED',100),
+((SELECT id FROM product_categories WHERE slug='specialty-additives'),'Biocides','biocides','Biocide options selected around application requirements.','PUBLISHED',110),
+((SELECT id FROM product_categories WHERE slug='thermoplastic-resins'),'PVC Resins','pvc-resins','PVC resin supply for applicable processing requirements.','PUBLISHED',10),
+((SELECT id FROM product_categories WHERE slug='thermoplastic-resins'),'PE Resins','pe-resins','Polyethylene resin supply for applicable processing requirements.','PUBLISHED',20),
+((SELECT id FROM product_categories WHERE slug='thermoplastic-resins'),'PP Resins','pp-resins','Polypropylene resin supply for applicable processing requirements.','PUBLISHED',30),
+((SELECT id FROM product_categories WHERE slug='thermoplastic-resins'),'Engineering Plastics','engineering-plastics','Engineering thermoplastic solutions selected around end-use needs.','PUBLISHED',40);
+
+UPDATE products SET featured=1 WHERE slug IN ('titanium-dioxide','calcium-zinc-stabilizers','pe-wax','mbs','non-halogenated-flame-retardants','glass-fiber');
+
+INSERT INTO industries (name, slug, short_description, sort_order, status) VALUES
+('PVC Pipes & Fittings','pvc-pipes-fittings','Materials and additives for PVC pipe and fitting applications.',10,'PUBLISHED'),
+('Wire & Cable','wire-cable','Polymer material solutions for wire and cable applications.',20,'PUBLISHED'),
+('Plastic Compounding','plastic-compounding','Resins and additive families for compound formulation.',30,'PUBLISHED'),
+('Masterbatch Manufacturing','masterbatch-manufacturing','Materials supporting color and functional masterbatch production.',40,'PUBLISHED'),
+('Packaging','packaging','Polymer additives and resins for packaging applications.',50,'PUBLISHED'),
+('Automotive','automotive','Material solutions for polymer components used in automotive applications.',60,'PUBLISHED'),
+('Building & Construction','building-construction','Polymer solutions for building and construction applications.',70,'PUBLISHED'),
+('Electrical & Electronics','electrical-electronics','Materials for electrical and electronics polymer applications.',80,'PUBLISHED'),
+('Injection Moulding','injection-moulding','Material solutions for injection-moulding processes.',90,'PUBLISHED'),
+('Extrusion','extrusion','Resins and additives for extrusion processes.',100,'PUBLISHED'),
+('Engineering Plastics','engineering-plastics','Solutions for engineering thermoplastic applications.',110,'PUBLISHED'),
+('Consumer Products','consumer-products','Polymer materials for a range of consumer product applications.',120,'PUBLISHED');
+
+INSERT INTO pages (title, slug, excerpt, content, template, status, seo_title, seo_description) VALUES
+('About Us','about','Your reliable polymer and additive partner.','L2 Chemicals supplies thermoplastic resins and specialty additives to the plastic processing industry. We serve compounders, masterbatch producers, converters and manufacturers with a focus on consistent supply, application-aware solutions, and technical and commercial coordination.','about','PUBLISHED','About L2 Chemicals','Learn about L2 Chemicals, a supplier of thermoplastic resins and polymer additives.'),
+('Technical Support','technical-support','Solutions engineered for better performance.','Our support begins with understanding the polymer, process, end-use application and commercial requirement. We help customers explore suitable material and additive categories without making unsupported performance claims.','technical-support','PUBLISHED','Technical Support | L2 Chemicals','Material selection, polymer additive and application support from L2 Chemicals.'),
+('Privacy Policy','privacy-policy','How website enquiry information is handled.','This page is ready for the company administrator to publish the approved privacy policy.','legal','PUBLISHED','Privacy Policy | L2 Chemicals','Privacy policy for the L2 Chemicals website.'),
+('Terms & Conditions','terms-conditions','Terms governing use of this website.','This page is ready for the company administrator to publish the approved website terms and conditions.','legal','PUBLISHED','Terms & Conditions | L2 Chemicals','Terms and conditions for the L2 Chemicals website.');
+
+INSERT INTO page_sections (page_id, section_key, eyebrow, heading, content, sort_order) VALUES
+((SELECT id FROM pages WHERE slug='about'),'who-we-are','Who we are','A B2B supply partner','L2 Chemicals focuses on thermoplastic resins and specialty additives for the plastic processing industry.',10),
+((SELECT id FROM pages WHERE slug='about'),'what-we-do','What we do','Materials aligned with applications','We support product sourcing and conversations around material selection, polymer additives and processing requirements.',20),
+((SELECT id FROM pages WHERE slug='about'),'values','How we work','Reliable, responsive and application focused','Our existing positioning emphasizes fast and consistent supply, customized additive solutions, and technical and commercial support.',30),
+((SELECT id FROM pages WHERE slug='technical-support'),'material-selection','Material selection','Start with the process and end use','Share the polymer type, processing method, desired outcome and current challenge so the team can discuss relevant product families.',10),
+((SELECT id FROM pages WHERE slug='technical-support'),'application-support','Application support','Connect materials to requirements','L2 Chemicals supports practical product discussions across compounding, masterbatch, extrusion, injection moulding and other polymer applications.',20);
+
+INSERT INTO blog_categories (name, slug, description, status) VALUES
+('Polymer Additives','polymer-additives','Technical insights related to polymer additive families.','PUBLISHED'),
+('Material Selection','material-selection','Application-oriented material selection perspectives.','PUBLISHED');
+
+COMMIT;

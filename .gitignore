@@ -1,0 +1,12 @@
+/.env
+/.mysql-data/
+/storage/logs/*.log
+/uploads/products/*
+/uploads/categories/*
+/uploads/industries/*
+/uploads/blog/*
+/uploads/banners/*
+/uploads/documents/*
+/uploads/general/*
+!/uploads/**/.gitkeep
+!/uploads/general/l2-chemicals-logo.png

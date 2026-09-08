@@ -1,0 +1,3 @@
+<section class="page-hero"><div class="container"><span class="eyebrow eyebrow-light">Material portfolio</span><h1>Products</h1><p>Thermoplastic resins and performance additives organized around polymer-processing requirements.</p></div></section>
+<section class="section section-muted"><div class="container"><div class="row g-4"><?php foreach ($categories as $category): ?><div class="col-md-6 col-lg-4"><a class="category-card" href="<?= e(url('products/' . $category['slug'])) ?>"><span class="category-icon"><i class="fa-solid fa-flask"></i></span><h2><?= e($category['name']) ?></h2><p><?= e($category['short_description']) ?></p><span>Browse category <i class="fa-solid fa-arrow-right"></i></span></a></div><?php endforeach; ?></div></div></section>
+

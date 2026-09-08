@@ -1,0 +1,3 @@
+<section class="page-hero"><div class="container"><span class="eyebrow eyebrow-light">L2 Chemicals</span><h1><?= e($page['title']) ?></h1><p><?= e($page['excerpt']) ?></p></div></section>
+<section class="section"><div class="container narrow"><?php if (!empty($page['content'])): ?><div class="prose"><p><?= nl2br(e($page['content'])) ?></p></div><?php endif; ?><?php foreach ($page['sections'] as $section): ?><section class="content-section"><span class="eyebrow"><?= e($section['eyebrow']) ?></span><h2><?= e($section['heading']) ?></h2><div class="prose"><p><?= nl2br(e($section['content'])) ?></p></div></section><?php endforeach; ?></div></section>
+
