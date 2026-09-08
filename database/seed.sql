@@ -3,7 +3,7 @@ START TRANSACTION;
 
 INSERT INTO settings (setting_group, setting_key, setting_value, field_type, is_public) VALUES
 ('general','company_name','L2 Chemicals','text',1),
-('general','logo','','image',1),
+('general','logo','public/assets/images/Logo-with-name-and-tagline.webp','image',1),
 ('general','favicon','','image',1),
 ('contact','phone','','text',1),
 ('contact','secondary_phone','','text',1),

@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
         <div class="container">
             <a class="navbar-brand" href="<?= e(url()) ?>" aria-label="L2 Chemicals home">
-                <?php if (!empty($settings['logo'])): ?><img src="<?= e(url($settings['logo'])) ?>" alt="L2 Chemicals"><?php else: ?><span class="brand-mark">L2</span><span>L2 <strong>Chemicals</strong></span><?php endif; ?>
+                <img src="<?= e(asset('images/Logo-with-name-and-tagline.webp')) ?>" alt="L2 Chemicals">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="mainNav">
@@ -26,4 +26,3 @@
         </div>
     </nav>
 </header>
-
